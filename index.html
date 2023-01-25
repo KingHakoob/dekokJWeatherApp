@@ -10,21 +10,80 @@
     <link rel="stylesheet" href="./CSS/style.css">
 </head>
 
-<body class="bodyDay">
+<body class="bodyDM">
     <!-- Navbar Start -->
-    <nav class="navbar bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand">Navbar</a>
+    <nav class="navbar navbarDM">
+        <div class="container-fluid margins">
+            <a class="navbar-brand">climate.xchange</a>
             <form class="d-flex">
-                <input id="cityInput" type="text" placeholder="Ripon, US">
-                <button id="cityInputBtn" class="btn btn-outline-success" type="button">Search</button>
+                <input id="cityInput" class="searchBarDM" type="text" placeholder="Search for a City">
+                <button id="cityInputBtn" class="btn searchBtnDM" type="button">S</button>
             </form>
         </div>
     </nav>
     <!-- Navbar End -->
 
-    <h1 class="text-center">Swear I did my work, check console please</h1>
-    <h1 class="text-center">I have Ripon's weather auto loaded</h1>
+    <!-- Current Weather -->
+        <div class="row day0Row">
+            <div class="col-12 margins">
+                <div class="day0WeatherDM">
+                    <div class="row">
+                        <div class="col-12 day0WeatherTopCol">
+                            <h1 id="cityName">City Name</h1>
+                            <h1>Fav</h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <h1 id="day0Temp" class="day0Temp">69°F</h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 day0WeatherBottomCol">
+                            <h1 id="day0Description">Sunny</h1>
+                            <h1 id="day0HighLow">H:69°F L:69°F</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- Current Weather -->
+
+    <!-- 5 Day Forecast -->
+    <div class="row forecastSpacing">
+        <div class="col-2">
+            <div class="forecastDivsDM">
+                <h3 id="day1Date">Mon</h3>
+                <p id="day1HighLow">69°F | 69°F</p>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="forecastDivsDM">
+                <h3 id="day2Date">Mon</h3>
+                <p id="day2HighLow">69°F | 69°F</p>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="forecastDivsDM">
+                <h3 id="day3Date">Mon</h3>
+                <p id="day3HighLow">69°F | 69°F</p>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="forecastDivsDM">
+                <h3 id="day4Date">Mon</h3>
+                <p id="day4HighLow">69°F | 69°F</p>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="forecastDivsDM">
+                <h3 id="day5Date">Mon</h3>
+                <p id="day5HighLow">69°F | 69°F</p>
+            </div>
+        </div>
+    </div>
+    <!-- 5 Day Forecast -->
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>

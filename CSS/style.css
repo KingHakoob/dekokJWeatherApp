@@ -1,7 +1,89 @@
-.bodyDay {
+/* General Use */
+.margins {
+    margin-left: 25%;
+    margin-right: 25%;
+    width: 50%;
+    padding: 0;
+}
+
+.noDefaultPadding {
+    padding: 0;
+}
+
+.noDefaultMargins {
+    margin: 0;
+}
+/* General Use */
+
+/* Day Mode - AKA DM */
+.bodyDM {
     background-image: url('../Assets/Images/daybg.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
 }
+
+    /* NavBar */
+.navbarDM {
+    background-color: white;
+}
+
+.searchBarDM {
+    border-radius: 10px;
+}
+
+.searchBtnDM {
+    color: white;
+    background-color: #BDB8F8;
+    border-radius: 10px;
+}
+
+.searchBtnDM:hover {
+    color: white;
+    background-color: #BDB8F8;
+}
+    /* NavBar */
+
+    /* Current Weather */
+.day0Row {
+    padding-top: 3rem;
+}
+
+.day0WeatherDM {
+    background-color: white;
+    border-radius: 10px;
+}
+
+.day0WeatherTopCol {
+    display: flex;
+    justify-content: space-between;
+}
+
+.day0Temp {
+    font-size: 5rem;
+    border-bottom: 0.1rem dotted black;
+}
+
+.day0WeatherBottomCol {
+    display: flex;
+    justify-content: space-between;
+}
+    /* Current Weather */
+
+    /* 5 Day Forecast */
+.forecastSpacing {
+    margin-left: 23%;
+    margin-right: 23%;
+    width: 54%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.forecastDivsDM {
+    background-color: white;
+    border-radius: 10px;
+    text-align: center;
+}
+    /* 5 Day Forecast */
+/* Day Mode - AKA DM */
