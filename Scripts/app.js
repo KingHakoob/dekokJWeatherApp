@@ -1,10 +1,11 @@
 // GeoCoding- http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
 // Current Weather- https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
 // 5 Day Weather- https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
-// Api Key- 00818819683953295233609f1731072f
 // &units=imperial for Fahrenheit -Thanks Drew
 // &units=metric for Celsius -Thanks Drew
 // &cnt=8 limits the 5 day weather to 8 responses -by default gives 8 per day / total of 40
+
+import { apiKey } from './environment.js';
 
 let cityInput = document.getElementById("cityInput");
 let cityInputBtn = document.getElementById("cityInputBtn");
@@ -24,9 +25,9 @@ cityInputBtn.addEventListener('click', function(){
 
 async function AsyncCityInput(){
 
-    if(!fetch("http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=00818819683953295233609f1731072f")) { return console.log("Unvalid Input"); }
+    if(!fetch("http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + apiKey)) { return console.log("Unvalid Input"); }
     else {
-        const promise = await fetch("http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=00818819683953295233609f1731072f");
+        const promise = await fetch("http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + apiKey);
         const data = await promise.json();
 
         cityLat = data[0].lat;
@@ -43,7 +44,7 @@ async function AsyncCityInput(){
 }
 
 async function AsyncGetCurrentWeather(lat, lon){
-    const promise = await fetch("https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=00818819683953295233609f1731072f&units=imperial");
+    const promise = await fetch("https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey + "&units=imperial");
     const data = await promise.json();
     
     currentWeather = data;
@@ -56,7 +57,7 @@ async function AsyncGetCurrentWeather(lat, lon){
 }
 
 async function Async5DayForcast(lat, lon){
-    const promise = await fetch("https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=00818819683953295233609f1731072f&units=imperial");
+    const promise = await fetch("https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey + "&units=imperial");
     const data = await promise.json();
     
     fiveDayReport = data;

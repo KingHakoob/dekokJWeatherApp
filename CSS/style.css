@@ -1,0 +1,7 @@
+.bodyDay {
+    background-image: url('../Assets/Images/daybg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
