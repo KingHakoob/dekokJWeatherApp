@@ -76,6 +76,7 @@
     margin-left: 23%;
     margin-right: 23%;
     width: 54%;
+    padding-top: 1rem;
     display: flex;
     justify-content: space-around;
 }
@@ -86,4 +87,11 @@
     text-align: center;
 }
     /* 5 Day Forecast */
+
+    /* Future Forecast */
+.futureForecastDiv {
+    background-color: white;
+    border-radius: 10px;
+}
+    /* Future Forecast */
 /* Day Mode - AKA DM */
