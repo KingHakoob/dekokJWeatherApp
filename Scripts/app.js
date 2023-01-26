@@ -47,11 +47,36 @@ let favoritesOffCanvas = document.getElementById("favoritesOffCanvas");
 let closeFavoritesBtn = document.getElementById("closeFavoritesBtn");
 let favCitiesBody = document.getElementById("favCitiesBody");
 
-let city = "Ripon"
+let currentLat;
+let currentLon;
+let city;
 let cityLat;
 let cityLon;
 let currentWeather;
 let fiveDayReport;
+
+const options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximunAge: 0
+}
+
+function success(position){
+    console.log(position);
+    currentLat = position.coords.latitude;
+    console.log(currentLat);
+    currentLon = position.coords.longitude;
+    console.log(currentLon);
+
+    AsyncGetCurrentWeather(currentLat, currentLon);
+    Async5DayForcast(currentLat, currentLon);
+}
+
+function error(err){
+    console.warn(err.message);
+}
+
+navigator.geolocation.getCurrentPosition(success, error, options);
 
 cityInputBtn.addEventListener('click', function(){
     console.clear();
@@ -61,7 +86,7 @@ cityInputBtn.addEventListener('click', function(){
 
 async function AsyncCityInput(){
 
-    if(!fetch("http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + apiKey)) { return console.log("Unvalid Input"); }
+    if(!fetch("http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + apiKey)) { return console.log("Invalid Input"); }
     else {
         const promise = await fetch("http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + apiKey);
         const data = await promise.json();
@@ -74,7 +99,6 @@ async function AsyncCityInput(){
 
 
         console.log(data[0].name);
-        cityName.textContent = data[0].name;
         AsyncGetCurrentWeather(cityLat, cityLon);
         Async5DayForcast(cityLat, cityLon);
     }
@@ -83,8 +107,13 @@ async function AsyncCityInput(){
 async function AsyncGetCurrentWeather(lat, lon){
     const promise = await fetch("https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey + "&units=imperial");
     const data = await promise.json();
-    
+
     currentWeather = data;
+
+    
+    cityName.textContent = currentWeather.name;
+    city = cityName.textContent;
+
     console.log(currentWeather);
     console.log("Current Day");
     console.log("   Current Temp Is: " + currentWeather.main.temp + "°F");
@@ -330,4 +359,3 @@ function MinTemp(data, start, end){
     return Math.round(min);
 }
 
-AsyncCityInput();
