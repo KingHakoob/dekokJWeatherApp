@@ -6,6 +6,7 @@
 // &cnt=8 limits the 5 day weather to 8 responses -by default gives 8 per day / total of 40
 
 import { apiKey } from './environment.js';
+import { SaveToLocalStorageByName, GetLocalStorage, RemoveFromLocalStorage } from './localStorage.js';
 
 let cityInput = document.getElementById("cityInput");
 let cityInputBtn = document.getElementById("cityInputBtn");
@@ -14,6 +15,8 @@ let cityName = document.getElementById("cityName");
 let day0Temp = document.getElementById("day0Temp");
 let day0Description = document.getElementById("day0Description");
 let day0HighLow = document.getElementById("day0HighLow");
+
+let addFavBtn = document.getElementById("addFavBtn");
 
 const d = new Date();
 let weekDayLong = ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"];
@@ -39,7 +42,12 @@ let day5HighLow = document.getElementById("day5HighLow");
 
 let futureForecast = document.getElementById("futureForecast");
 
-let city = "Ripon, US"
+let openFavoritesBtn = document.getElementById("openFavoritesBtn");
+let favoritesOffCanvas = document.getElementById("favoritesOffCanvas");
+let closeFavoritesBtn = document.getElementById("closeFavoritesBtn");
+let favCitiesBody = document.getElementById("favCitiesBody");
+
+let city = "Ripon"
 let cityLat;
 let cityLon;
 let currentWeather;
@@ -162,6 +170,10 @@ async function Async5DayForcast(lat, lon){
     console.log("   Weather Description: " + fiveDayReport.list[36].weather[0].description);
 }
 
+addFavBtn.addEventListener('click', function(){
+    SaveToLocalStorageByName(city);
+})
+
 day1Div.addEventListener('click', function(){
     CreateFutureForecast(1);
 })
@@ -180,6 +192,21 @@ day4Div.addEventListener('click', function(){
 
 day5Div.addEventListener('click', function(){
     CreateFutureForecast(5);
+})
+
+openFavoritesBtn.addEventListener('click', function(){
+    favoritesOffCanvas.classList.add("show");
+    favCitiesBody.innerHTML = "";
+    
+    let favorites = GetLocalStorage();
+
+    favorites.map(cityName => {
+        DisplayFavorties(cityName);
+    })
+})
+
+closeFavoritesBtn.addEventListener('click', function(){
+    favoritesOffCanvas.classList.remove("show");
 })
 
 function CreateFutureForecast(day){
@@ -255,6 +282,36 @@ function CreateFutureForecast(day){
     futureForecastRow.appendChild(futureForecastRightCol);
 
     futureForecast.appendChild(futureForecastRow);
+}
+
+function DisplayFavorties(cityName){
+    let favCityName = document.createElement("p");
+    favCityName.className = "favCityName";
+    favCityName.textContent = cityName;
+
+    let removeFavBtn = document.createElement("button");
+    removeFavBtn.className = "btn-close";
+    removeFavBtn.type = "button";
+    removeFavBtn.addEventListener('click', function(){
+        RemoveFromLocalStorage(cityName);
+        favCitiesBody.innerHTML = "";
+        let favorites = GetLocalStorage();
+        favorites.map(cityName => {
+            DisplayFavorties(cityName);
+        })
+    })
+
+    let favBodyDiv = document.createElement("div");
+    favBodyDiv.className = "favBody";
+
+    favBodyDiv.appendChild(favCityName);
+    favBodyDiv.appendChild(removeFavBtn);
+
+    let favSpacingDiv = document.createElement("div");
+    favSpacingDiv.className = "favSpacing";
+
+    favSpacingDiv.appendChild(favBodyDiv);
+    favCitiesBody.appendChild(favSpacingDiv);
 }
 
 function MaxTemp(data, start, end){
