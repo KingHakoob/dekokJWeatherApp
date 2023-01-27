@@ -10,14 +10,16 @@
     <link rel="stylesheet" href="./CSS/style.css">
 </head>
 
-<body class="bodyDM">
+<body id="bodyTag" class="bodyDM">
     <!-- Navbar Start -->
     <nav class="navbar navbarDM">
         <div class="container-fluid margins">
-            <a class="navbar-brand">climate.xchange</a>
+            <a id="siteName" class="navbar-brand">climate.xchange</a>
             <form class="d-flex">
-                <input id="cityInput" class="searchBarDM" type="text" placeholder="Search for a City">
-                <button id="cityInputBtn" class="btn searchBtnDM" type="button">S</button>
+                <input id="cityInput" class="searchBarDM" type="text" placeholder="Search for City, Country Initals">
+                <button id="cityInputBtn" class="btn searchBtnDM" type="button">
+                    <img id="searchBtnIcon" src="./Assets/Icons/SearchBTN-removebg-preview.png" alt="Search Btn">
+                </button>
             </form>
         </div>
     </nav>
@@ -29,19 +31,20 @@
             <div class="day0WeatherDM">
                 <div class="row">
                     <div class="col-12 day0WeatherTopCol">
-                        <h1 id="cityName">City Name</h1>
-                        <h1 id="addFavBtn">Fav</h1>
+                        <h1 id="cityName"></h1>
+                        <img id="addFavBtn" src="./Assets/Icons/HeartIcon-removebg-preview.png" alt="Search Btn">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12">
-                        <h1 id="day0Temp" class="day0Temp">69°F</h1>
+                    <div id="day0TempCol" class="col-12">
+                        <img id="day0TempIcon" src="./Assets/Icons/iconizer-sun.svg" alt="Sun">
+                        <h1 id="day0Temp" class="day0Temp"></h1>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12 day0WeatherBottomCol">
-                        <h1 id="day0Description">Sunny</h1>
-                        <h1 id="day0HighLow">H:69°F L:69°F</h1>
+                        <h1 id="day0Description"></h1>
+                        <h1 id="day0HighLow"></h1>
                     </div>
                 </div>
             </div>
@@ -53,32 +56,47 @@
     <div class="row forecastSpacing">
         <div class="pillar-20">
             <div id="day1Div" class="forecastDivsDM">
-                <h3 id="day1Date">Mon</h3>
-                <p id="day1HighLow">69°F | 69°F</p>
+                <h3 id="day1Date"></h3>
+                <div class="d-flex justify-content-center">
+                    <img class="forecastIcons" src="./Assets/Icons/cloud-hail-sun.svg" alt="WeatherIcon">
+                </div> 
+                <p id="day1HighLow"></p>
             </div>
         </div>
         <div class="pillar-20">
             <div id="day2Div" class="forecastDivsDM">
-                <h3 id="day2Date">Mon</h3>
-                <p id="day2HighLow">69°F | 69°F</p>
+                <h3 id="day2Date"></h3>
+                <div class="d-flex justify-content-center">
+                    <img class="forecastIcons" src="./Assets/Icons/cloud-hail-sun.svg" alt="WeatherIcon">
+                </div> 
+                <p id="day2HighLow"></p>
             </div>
         </div>
         <div class="pillar-20">
             <div id="day3Div" class="forecastDivsDM">
-                <h3 id="day3Date">Mon</h3>
-                <p id="day3HighLow">69°F | 69°F</p>
+                <h3 id="day3Date"></h3>
+                <div class="d-flex justify-content-center">
+                    <img class="forecastIcons" src="./Assets/Icons/cloud-hail-sun.svg" alt="WeatherIcon">
+                </div> 
+                <p id="day3HighLow">F</p>
             </div>
         </div>
         <div class="pillar-20">
             <div id="day4Div" class="forecastDivsDM">
-                <h3 id="day4Date">Mon</h3>
-                <p id="day4HighLow">69°F | 69°F</p>
+                <h3 id="day4Date"></h3>
+                <div class="d-flex justify-content-center">
+                    <img class="forecastIcons" src="./Assets/Icons/cloud-hail-sun.svg" alt="WeatherIcon">
+                </div> 
+                <p id="day4HighLow"></p>
             </div>
         </div>
         <div class="pillar-20">
             <div id="day5Div" class="forecastDivsDM">
-                <h3 id="day5Date">Mon</h3>
-                <p id="day5HighLow">69°F | 69°F</p>
+                <h3 id="day5Date"></h3>
+                <div class="d-flex justify-content-center">
+                    <img class="forecastIcons" src="./Assets/Icons/cloud-hail-sun.svg" alt="WeatherIcon">
+                </div> 
+                <p id="day5HighLow"></p>
             </div>
         </div>
     </div>
@@ -88,7 +106,7 @@
     <div class="row">
         <div class="col-12 margins">
             <div id="futureForecast" class="futureForecastDiv">
-                
+
             </div>
         </div>
     </div>
@@ -97,25 +115,52 @@
     <!-- Open Favorites Button -->
     <div class="row openFavoriteRow">
         <div class="col-12 d-flex justify-content-center">
-            <button id="openFavoritesBtn" type="button" class="btn btn-primary openFavoritesBtn">Open Your Favorite
+            <button id="openFavoritesBtn" type="button" class="btn openFavoritesBtn">Open Your Favorite
                 Places</button>
         </div>
     </div>
     <!-- Open Favorites Button -->
-
-    <!-- Favorites List -->
-    <div class="offcanvas offcanvas-start favOffCanvas" tabindex="-1" id="favoritesOffCanvas"
-        aria-labelledby="offcanvasExampleLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasExampleLabel">YOUR FAVORITE CITIES</h5>
-            <button id="closeFavoritesBtn" type="button" class="btn-close" data-bs-dismiss="offcanvas"
-                aria-label="Close"></button>
-        </div>
-        <div id="favCitiesBody" class="offcanvas-body">
-            
+    
+    <!-- Change Temp Type -->
+    <div class="row">
+        <div class="col-12">
+            <h3 id="tempChangeTxt" class="tempChangeTxt">temperature view: Fahrenheit (click to change)</h3>
         </div>
     </div>
+    <!-- Change Temp Type -->
+
     <!-- Favorites List -->
+    <div class="offcanvas offcanvas-start favOffCanvas" tabindex="-1" id="favoritesOffCanvas" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasExampleLabel">YOUR FAVORITE CITIES</h5>
+          <button id="closeFavoritesBtn" type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div id="favCitiesBody" class="offcanvas-body">
+          
+        </div>
+      </div>
+    <!-- Favorites List -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Understood</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"

@@ -47,6 +47,8 @@ let favoritesOffCanvas = document.getElementById("favoritesOffCanvas");
 let closeFavoritesBtn = document.getElementById("closeFavoritesBtn");
 let favCitiesBody = document.getElementById("favCitiesBody");
 
+let changeTemp = document.getElementById("tempChangeTxt");
+
 let currentLat;
 let currentLon;
 let city;
@@ -55,6 +57,9 @@ let cityLon;
 let currentWeather;
 let fiveDayReport;
 
+let tempView = '°F';
+
+
 const options = {
     enableHighAccuracy: true,
     timeout: 5000,
@@ -62,11 +67,8 @@ const options = {
 }
 
 function success(position){
-    console.log(position);
     currentLat = position.coords.latitude;
-    console.log(currentLat);
     currentLon = position.coords.longitude;
-    console.log(currentLon);
 
     AsyncGetCurrentWeather(currentLat, currentLon);
     Async5DayForcast(currentLat, currentLon);
@@ -79,7 +81,6 @@ function error(err){
 navigator.geolocation.getCurrentPosition(success, error, options);
 
 cityInputBtn.addEventListener('click', function(){
-    console.clear();
     city = cityInput.value;
     AsyncCityInput();
 })
@@ -93,110 +94,68 @@ async function AsyncCityInput(){
 
         cityLat = data[0].lat;
         cityLon = data[0].lon;
-        console.log(cityLat);
-        console.log(cityLon);
-        console.log("");
 
-
-        console.log(data[0].name);
         AsyncGetCurrentWeather(cityLat, cityLon);
         Async5DayForcast(cityLat, cityLon);
     }
 }
 
 async function AsyncGetCurrentWeather(lat, lon){
-    const promise = await fetch("https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey + "&units=imperial");
-    const data = await promise.json();
+    let promise;
+    let data;
+
+    if(tempView === '°F') {
+        promise = await fetch("https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey + "&units=imperial");
+        data = await promise.json();
+    }else {
+        promise = await fetch("https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey + "&units=metric");
+        data = await promise.json();
+    }
 
     currentWeather = data;
 
-    
     cityName.textContent = currentWeather.name;
-    city = cityName.textContent;
+    city = cityName.textContent + ", " + currentWeather.sys.country;
+    day0Temp.textContent = Math.round(currentWeather.main.temp) + tempView;
 
-    console.log(currentWeather);
-    console.log("Current Day");
-    console.log("   Current Temp Is: " + currentWeather.main.temp + "°F");
-    day0Temp.textContent = Math.round(currentWeather.main.temp) + "°F";
-
-    console.log("   Current Weather: " + currentWeather.weather[0].main);
     day0Description.textContent = currentWeather.weather[0].main;
 
-    console.log("   Max Temp Today Is: " + currentWeather.main.temp_max + "°F");
-    console.log("   Min Temp Today Is: " + currentWeather.main.temp_min + "°F");
-    day0HighLow.textContent = "H:" + Math.round(currentWeather.main.temp_max) + "°F L:" + Math.round(currentWeather.main.temp_min) + "°F";
+    day0HighLow.textContent = "H:" + Math.round(currentWeather.main.temp_max) + tempView +" L:" + Math.round(currentWeather.main.temp_min) + tempView;
 }
 
 async function Async5DayForcast(lat, lon){
-    const promise = await fetch("https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey + "&units=imperial");
-    const data = await promise.json();
+    let promise;
+    let data;
+
+    if(tempView === '°F') {
+        promise = await fetch("https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey + "&units=imperial");
+        data = await promise.json();
+    }else {
+        promise = await fetch("https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey + "&units=metric");
+        data = await promise.json();
+    }
     
     fiveDayReport = data;
-    console.log(fiveDayReport);
-    console.log("");
 
     if((d.getDay() + 1) > 6) { day1Date.textContent = weekDayShort[d.getDay() + 1 - 7]; }
     else { day1Date.textContent = weekDayShort[d.getDay() + 1] }
-    console.log("One Day Ahead");   // [0-7]
-    console.log("   Morning Temp: " + fiveDayReport.list[2].main.temp + "°F")
-    console.log("   Afternoon Temp: " + fiveDayReport.list[4].main.temp + "°F")
-    console.log("   Evening Temp: " + fiveDayReport.list[6].main.temp + "°F")
-    console.log("   Max Temp: " + MaxTemp(fiveDayReport, 0, 7) + "°F");
-    console.log("   Min Temp: " + MinTemp(fiveDayReport, 0, 7) + "°F");
-    day1HighLow.textContent = MaxTemp(fiveDayReport, 0, 7) + "°F | " + MinTemp(fiveDayReport, 0, 7) + "°F"
-    console.log("   Weather Description: " + fiveDayReport.list[4].weather[0].description);
-    console.log("");
-    console.log("");
+    day1HighLow.textContent = MaxTemp(fiveDayReport, 0, 7) + tempView + " | " + MinTemp(fiveDayReport, 0, 7) + tempView;
 
     if((d.getDay() + 2) > 6) { day2Date.textContent = weekDayShort[d.getDay() + 2 - 7]; }
     else { day2Date.textContent = weekDayShort[d.getDay() + 2] }
-    console.log("Two Days Ahead");   // [8-15]
-    console.log("   Morning Temp: " + fiveDayReport.list[10].main.temp + "°F")
-    console.log("   Afternoon Temp: " + fiveDayReport.list[12].main.temp + "°F")
-    console.log("   Evening Temp: " + fiveDayReport.list[14].main.temp + "°F")
-    console.log("   Max Temp: " + MaxTemp(fiveDayReport, 8, 15) + "°F");
-    console.log("   Min Temp: " + MinTemp(fiveDayReport, 8, 15) + "°F");
-    day2HighLow.textContent = MaxTemp(fiveDayReport, 8, 15) + "°F | " + MinTemp(fiveDayReport, 8, 15) + "°F"
-    console.log("   Weather Description: " + fiveDayReport.list[12].weather[0].description);
-    console.log("");
-    console.log("");
+    day2HighLow.textContent = MaxTemp(fiveDayReport, 8, 15) + tempView + " | " + MinTemp(fiveDayReport, 8, 15) + tempView;
 
     if((d.getDay() + 3) > 6) { day3Date.textContent = weekDayShort[d.getDay() + 3 - 7]; }
     else { day3Date.textContent = weekDayShort[d.getDay() + 3] }
-    console.log("Three Days Ahead");   // [16-23]
-    console.log("   Morning Temp: " + fiveDayReport.list[18].main.temp + "°F")
-    console.log("   Afternoon Temp: " + fiveDayReport.list[20].main.temp + "°F")
-    console.log("   Evening Temp: " + fiveDayReport.list[22].main.temp + "°F")
-    console.log("   Max Temp: " + MaxTemp(fiveDayReport, 16, 23) + "°F");
-    console.log("   Min Temp: " + MinTemp(fiveDayReport, 16, 23) + "°F");
-    day3HighLow.textContent = MaxTemp(fiveDayReport, 16, 23) + "°F | " + MinTemp(fiveDayReport, 16, 23) + "°F"
-    console.log("   Weather Description: " + fiveDayReport.list[20].weather[0].description);
-    console.log("");
-    console.log("");
+    day3HighLow.textContent = MaxTemp(fiveDayReport, 16, 23) + tempView + " | " + MinTemp(fiveDayReport, 16, 23) + tempView;
 
     if((d.getDay() + 4) > 6) { day4Date.textContent = weekDayShort[d.getDay() + 4 - 7]; }
     else { day4Date.textContent = weekDayShort[d.getDay() + 4] }
-    console.log("Four Days Ahead");   // [24-31]
-    console.log("   Morning Temp: " + fiveDayReport.list[26].main.temp + "°F")
-    console.log("   Afternoon Temp: " + fiveDayReport.list[28].main.temp + "°F")
-    console.log("   Evening Temp: " + fiveDayReport.list[30].main.temp + "°F")
-    console.log("   Max Temp: " + MaxTemp(fiveDayReport, 24, 31) + "°F");
-    console.log("   Min Temp: " + MinTemp(fiveDayReport, 24, 31) + "°F");
-    day4HighLow.textContent = MaxTemp(fiveDayReport, 24, 31) + "°F | " + MinTemp(fiveDayReport, 24, 31) + "°F"
-    console.log("   Weather Description: " + fiveDayReport.list[28].weather[0].description);
-    console.log("");
-    console.log("");
+    day4HighLow.textContent = MaxTemp(fiveDayReport, 24, 31) + tempView + " | " + MinTemp(fiveDayReport, 24, 31) + tempView;
 
     if((d.getDay() + 5) > 6) { day5Date.textContent = weekDayShort[d.getDay() + 5 - 7]; }
     else { day5Date.textContent = weekDayShort[d.getDay() + 5] }
-    console.log("Five Days Ahead");   // [32-39]
-    console.log("   Morning Temp: " + fiveDayReport.list[34].main.temp + "°F")
-    console.log("   Afternoon Temp: " + fiveDayReport.list[36].main.temp + "°F")
-    console.log("   Evening Temp: " + fiveDayReport.list[38].main.temp + "°F")
-    console.log("   Max Temp: " + MaxTemp(fiveDayReport, 32, 39) + "°F");
-    console.log("   Min Temp: " + MinTemp(fiveDayReport, 32, 39) + "°F");
-    day5HighLow.textContent = MaxTemp(fiveDayReport, 32, 39) + "°F | " + MinTemp(fiveDayReport, 32, 39) + "°F"
-    console.log("   Weather Description: " + fiveDayReport.list[36].weather[0].description);
+    day5HighLow.textContent = MaxTemp(fiveDayReport, 32, 39) + tempView + " | " + MinTemp(fiveDayReport, 32, 39) + tempView;
 }
 
 addFavBtn.addEventListener('click', function(){
@@ -244,10 +203,12 @@ function CreateFutureForecast(day){
 
 
     let dayOfWeek = document.createElement("h1")
+    dayOfWeek.className = "futureForecastDay";
     if((d.getDay() + day) > 6) { dayOfWeek.textContent = weekDayLong[d.getDay() + day - 7]; }
     else { dayOfWeek.textContent = weekDayLong[d.getDay() + day] }
 
     let futureDescription = document.createElement("h1")
+    futureDescription.className = "futureForecastDescription";
     futureDescription.textContent = fiveDayReport.list[((day * 8) - 4)].weather[0].description;
 
     let futureForecastLeftCol = document.createElement("div");
@@ -257,39 +218,63 @@ function CreateFutureForecast(day){
     futureForecastLeftCol.appendChild(futureDescription);
 
     let morningTxt = document.createElement("p");
+    morningTxt.className = "futureForecastTimeTxt";
     morningTxt.textContent = "6am";
 
+    let morningIcon = document.createElement("img");
+    morningIcon.className = "futureForecastIcons";
+    morningIcon.src = "./Assets/Icons/iconizer-sun.svg";
+    morningIcon.alt = "Morning Icon";
+
     let morningTemp = document.createElement("p")
-    morningTemp.textContent = Math.round(fiveDayReport.list[((day * 8) - 6)].main.temp) + "°F";
+    morningTemp.className = "futureForecastTempTxt";
+    morningTemp.textContent = Math.round(fiveDayReport.list[((day * 8) - 6)].main.temp) + "°";
 
     let morningDiv = document.createElement("div");
-    morningDiv.className = "col-4";
+    morningDiv.className = "col-4 futureForecastRightDivs";
 
     morningDiv.appendChild(morningTxt);
+    morningDiv.appendChild(morningIcon);
     morningDiv.appendChild(morningTemp);
 
     let afternoonTxt = document.createElement("p");
-    afternoonTxt.textContent = "Noon";
+    afternoonTxt.className = "futureForecastTimeTxt";
+    afternoonTxt.textContent = "noon";
+
+    let afternoonIcon = document.createElement("img");
+    afternoonIcon.className = "futureForecastIcons";
+    afternoonIcon.src = "./Assets/Icons/iconizer-cloud-sun.svg";
+    afternoonIcon.alt = "Afternoon Icon";
 
     let afternoonTemp = document.createElement("p")
-    afternoonTemp.textContent = Math.round(fiveDayReport.list[((day * 8) - 4)].main.temp) + "°F";
+    afternoonTemp.className = "futureForecastTempTxt";
+    afternoonTemp.textContent = Math.round(fiveDayReport.list[((day * 8) - 4)].main.temp) + "°";
 
     let afternoonDiv = document.createElement("div");
-    afternoonDiv.className = "col-4";
+    afternoonDiv.className = "col-4 futureForecastRightDivs futureForecastMiddleDiv";
 
     afternoonDiv.appendChild(afternoonTxt);
+    afternoonDiv.appendChild(afternoonIcon);
     afternoonDiv.appendChild(afternoonTemp);
 
     let eveningTxt = document.createElement("p");
+    eveningTxt.className = "futureForecastTimeTxt";
     eveningTxt.textContent = "6pm";
 
+    let eveningIcon = document.createElement("img");
+    eveningIcon.className = "futureForecastIcons";
+    eveningIcon.src = "./Assets/Icons/iconizer-moon-75.svg";
+    eveningIcon.alt = "Evening Icon";
+
     let eveningTemp = document.createElement("p")
-    eveningTemp.textContent = Math.round(fiveDayReport.list[((day * 8) - 2)].main.temp) + "°F";
+    eveningTemp.className = "futureForecastTempTxt";
+    eveningTemp.textContent = Math.round(fiveDayReport.list[((day * 8) - 2)].main.temp) + "°";
 
     let eveningDiv = document.createElement("div");
-    eveningDiv.className = "col-4";
+    eveningDiv.className = "col-4 futureForecastRightDivs";
 
     eveningDiv.appendChild(eveningTxt);
+    eveningDiv.appendChild(eveningIcon);
     eveningDiv.appendChild(eveningTemp);
 
     let futureRightRow = document.createElement("div");
@@ -319,7 +304,7 @@ function DisplayFavorties(cityName){
     favCityName.textContent = cityName;
 
     let removeFavBtn = document.createElement("button");
-    removeFavBtn.className = "btn-close";
+    removeFavBtn.className = "btn-close removeFavBtn";
     removeFavBtn.type = "button";
     removeFavBtn.addEventListener('click', function(){
         RemoveFromLocalStorage(cityName);
@@ -359,3 +344,25 @@ function MinTemp(data, start, end){
     return Math.round(min);
 }
 
+changeTemp.addEventListener('click', function(){
+    ChangeTempView();
+})
+
+async function ChangeTempView(){
+    if(tempView === '°F') {
+        tempView = '°C';
+        changeTemp.textContent = "temperature view: Celsius (click to change)"
+    }else {
+        tempView = '°F';
+        changeTemp.textContent = "temperature view: Fahrenheit (click to change)"
+    }
+
+    const promise = await fetch("http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + apiKey);
+    const data = await promise.json();
+
+    cityLat = data[0].lat;
+    cityLon = data[0].lon;
+
+    AsyncGetCurrentWeather(cityLat, cityLon);
+    Async5DayForcast(cityLat, cityLon);
+}

@@ -1,4 +1,34 @@
 /* General Use */
+@font-face {
+    font-family: Biryani-Bold;
+    src: url("../Assets/Fonts/Biryani-Bold.ttf");
+}
+
+@font-face {
+    font-family: Biryani-Regular;
+    src: url("../Assets/Fonts/Biryani-Regular.ttf");
+}
+
+@font-face {
+    font-family: Biryani-Light;
+    src: url("../Assets/Fonts/Biryani-Light.ttf");
+}
+
+@font-face {
+    font-family: Biryani-ExtraLight;
+    src: url("../Assets/Fonts/Biryani-ExtraLight.ttf");
+}
+
+@font-face {
+    font-family: Philosopher-Bold;
+    src: url("../Assets/Fonts/Philosopher-Bold.ttf");
+}
+
+@font-face {
+    font-family: Philosopher-Regular;
+    src: url("../Assets/Fonts/Philosopher-Regular.ttf");
+}
+
 .margins {
     margin-left: 25%;
     margin-right: 25%;
@@ -21,22 +51,38 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-position: center;
+    background-position: top;
 }
 
     /* NavBar */
 .navbarDM {
     background-color: white;
+    padding: 0;
+}
+
+#siteName {
+    font-family: Philosopher-Bold;
+    color: #757575;
+    font-size: 1.8rem;
 }
 
 .searchBarDM {
     border-radius: 10px;
+    border: none;
+    box-shadow: 2px 2px 2px 2px gray;
+    width: 18rem;
+    margin-right: 1rem;
 }
 
 .searchBtnDM {
     color: white;
     background-color: #BDB8F8;
     border-radius: 10px;
+}
+
+#searchBtnIcon {
+    width: 1.5rem;
+    height: 1.5rem;
 }
 
 .searchBtnDM:hover {
@@ -58,16 +104,62 @@
 .day0WeatherTopCol {
     display: flex;
     justify-content: space-between;
+    margin-top: 3%;
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+}
+
+#cityName {
+    font-family: Biryani-ExtraLight;
+    font-size: 2rem;
+    color: #A2A2A2;
+    letter-spacing: 0.2rem;
+}
+
+#addFavBtn {
+    width: 2rem;
+    height: 2rem;
+}
+
+#day0TempCol {
+    display: flex;
+    justify-content: center;
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+    border-bottom: 0.2rem dotted #A2A2A2;
 }
 
 .day0Temp {
-    font-size: 5rem;
-    border-bottom: 0.1rem dotted black;
+    font-family: Philosopher-Regular;
+    font-size: 6rem;
+    color: #454545;
+}
+
+#day0TempIcon {
+    width: 5.5rem;
 }
 
 .day0WeatherBottomCol {
     display: flex;
     justify-content: space-between;
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+    padding-top: 1rem;
+    padding-bottom: 1.2rem;
+
+    font-family: Philosopher-Regular;
+    color: #757575;
+}
+
+#day0Description {
+    font-size: 1.8rem;
+}
+
+#day0HighLow {
+    font-size: 1.8rem;
 }
     /* Current Weather */
 
@@ -82,7 +174,7 @@
 }
 
 .forecastDivsDM {
-    background-color: white;
+    background-color: #ffffffc4;
     border-radius: 10px;
     text-align: center;
 }
@@ -91,13 +183,132 @@
     flex: 0, 0, auto;
     width: 20%;
 }
+
+.forecastIcons {
+    width: 2rem;
+}
+
+#day1Date {
+    padding-top: 1rem;
+    font-family: Biryani-Regular;
+    font-size: 1rem;
+    color: #636561;
+}
+
+#day1HighLow {
+    font-family: Biryani-Regular;
+    font-size: 1rem;
+    color: #636561;
+}
+
+#day2Date {
+    padding-top: 1rem;
+    font-family: Biryani-Regular;
+    font-size: 1rem;
+    color: #636561;
+}
+
+#day2HighLow {
+    font-family: Biryani-Regular;
+    font-size: 1rem;
+    color: #636561;
+}
+
+#day3Date {
+    padding-top: 1rem;
+    font-family: Biryani-Regular;
+    font-size: 1rem;
+    color: #636561;
+}
+
+#day3HighLow {
+    font-family: Biryani-Regular;
+    font-size: 1rem;
+    color: #636561;
+}
+
+#day4Date {
+    padding-top: 1rem;
+    font-family: Biryani-Regular;
+    font-size: 1rem;
+    color: #636561;
+}
+
+#day4HighLow {
+    font-family: Biryani-Regular;
+    font-size: 1rem;
+    color: #636561;
+}
+
+#day5Date {
+    padding-top: 1rem;
+    font-family: Biryani-Regular;
+    font-size: 1rem;
+    color: #636561;
+}
+
+#day5HighLow {
+    font-family: Biryani-Regular;
+    font-size: 1rem;
+    color: #636561;
+}
     /* 5 Day Forecast */
 
     /* Future Forecast */
 .futureForecastDiv {
-    background-color: white;
+    background-color: #ffffffc4;
     border-radius: 10px;
 }
+
+.futureForecastDay {
+    font-family: Biryani-Light;
+    font-size: 1.6rem;
+    color: #636561;
+    letter-spacing: 0.2rem;
+    margin-top: 8%;
+    margin-left: 10%;
+    padding-bottom: 1rem;
+    border-bottom: 0.2rem dotted #636561;
+}
+
+.futureForecastDescription {
+    font-family: Biryani-Light;
+    font-size: 1.6rem;
+    color: #636561;
+    margin-top: 8%;
+    margin-left: 10%;
+    padding-bottom: 1rem;
+}
+
+.futureForecastRightDivs {
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.futureForecastMiddleDiv {
+    border-left: 0.2rem dotted #636561;
+    border-right: 0.2rem dotted #636561;
+}
+
+.futureForecastTimeTxt {
+    margin-top: 5%;
+    font-family: Biryani-Light;
+    font-size: 1rem;
+    color: #636561;
+}
+
+.futureForecastIcons {
+    width: 4rem;
+}
+
+.futureForecastTempTxt {
+    font-family: Philosopher-Regular;
+    font-size: 3rem;
+    color: #454545;
+    margin-bottom: 0;
+}
+
     /* Future Forecast */
 
     /* Open Favorites */
@@ -108,12 +319,35 @@
 .openFavoritesBtn {
     width: 25%;
     border-radius: 10px;
+    color: #636561;
+    background-color: #ffffffc4;
+    border: none;
+}
+
+.openFavoritesBtn:hover {
+    color: #636561;
+    background-color: #ffffffc4;
+    border: none;
 }
     /* Open Favorites */
+
+    /* Change Temp */
+.tempChangeTxt {
+    text-align: center;
+    color: white;
+    font-size: 0.8rem;
+}
+    /* Change Temp */
 
     /* Favorites Off Canvas */
 .favOffCanvas {
     background-color: #ffffffc4;
+    margin-top: 3.3rem;
+    width: 5rem;
+}
+
+.offcanvas-start {
+    width: 5rem;
 }
 
 .favSpacing{
@@ -122,12 +356,37 @@
 
 .favBody {
     background-color: white;
+    border-radius: 10px;
     display: flex;
     justify-content: space-between;
 }
 
 .favCityName {
     margin: 0;
+    font-family: Biryani-Bold;
+    font-size: 1rem;
+    color: #707070;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
+}
+
+.removeFavBtn {
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+    width: 0.1rem;
+    color: #A2A2A2;
+    margin-right: 1rem;
 }
     /* Favorites Off Canvas */
 /* Day Mode - AKA DM */
+
+/* Night Mode - AKA DM */
+.bodyNM {
+    background-image: url('../Assets/Images/nightbg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+/* Night Mode - AKA DM */
