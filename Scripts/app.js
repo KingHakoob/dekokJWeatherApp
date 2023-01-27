@@ -49,6 +49,9 @@ let favCitiesBody = document.getElementById("favCitiesBody");
 
 let changeTemp = document.getElementById("tempChangeTxt");
 
+let changeModeBtn = document.getElementById("modeChange");
+let bodyTag = document.getElementById("bodyTag");
+
 let currentLat;
 let currentLon;
 let city;
@@ -58,6 +61,61 @@ let currentWeather;
 let fiveDayReport;
 
 let tempView = '°F';
+
+let modeTxt = 'DM';
+let modeIconTxt = './Assets/Icons/iconizer-sun.svg'
+
+
+changeModeBtn.addEventListener('click', function(){
+    if(modeTxt === 'DM') {
+        modeTxt = 'NM';
+        bodyTag.className = "bodyNM";
+        
+        let txtColor = document.getElementsByClassName('modeColorTxt');
+        for(let i = 0; i < txtColor.length; i++) {
+            txtColor[i].style.color = 'white';
+        }
+
+        let solidBackgroundColor = document.getElementsByClassName('modeBackgroundColorSolid');
+        for(let i = 0; i < solidBackgroundColor.length; i++) {
+            solidBackgroundColor[i].style.backgroundColor = '#2F2F2F';
+        }
+
+        let transparentBackgroundColor = document.getElementsByClassName('modeBackgroundColorTransparent');
+        for(let i = 0; i < transparentBackgroundColor.length; i++) {
+            transparentBackgroundColor[i].style.backgroundColor = '#3A373Dc4';
+        }
+
+        let forecastIcons = document.getElementsByClassName('forecastIcons');
+        for(let i = 0; i < forecastIcons.length; i++) {
+            forecastIcons[i].src = './Assets/Icons/iconizer-cloud-hail-sun(1).svg';
+        }
+
+    }else {
+        modeTxt = 'DM';
+        bodyTag.className = "bodyDM";
+
+        let txtColor = document.getElementsByClassName('modeColorTxt');
+        for(let i = 0; i < txtColor.length; i++) {
+            txtColor[i].style.color = '#454545';
+        } 
+
+        let solidBackgroundColor = document.getElementsByClassName('modeBackgroundColorSolid');
+        for(let i = 0; i < solidBackgroundColor.length; i++) {
+            solidBackgroundColor[i].style.backgroundColor = 'white';
+        }
+
+        let transparentBackgroundColor = document.getElementsByClassName('modeBackgroundColorTransparent');
+        for(let i = 0; i < transparentBackgroundColor.length; i++) {
+            transparentBackgroundColor[i].style.backgroundColor = '#ffffffc4';
+        }
+
+        let forecastIcons = document.getElementsByClassName('forecastIcons');
+        for(let i = 0; i < forecastIcons.length; i++) {
+            forecastIcons[i].src = './Assets/Icons/cloud-hail-sun.svg';
+        }
+    }
+})
 
 
 const options = {
@@ -300,7 +358,7 @@ function CreateFutureForecast(day){
 
 function DisplayFavorties(cityName){
     let favCityName = document.createElement("p");
-    favCityName.className = "favCityName";
+    favCityName.className = "favCityName modeColorTxt";
     favCityName.textContent = cityName;
 
     let removeFavBtn = document.createElement("button");
@@ -316,7 +374,7 @@ function DisplayFavorties(cityName){
     })
 
     let favBodyDiv = document.createElement("div");
-    favBodyDiv.className = "favBody";
+    favBodyDiv.className = "favBody modeBackgroundColorSolid";
 
     favBodyDiv.appendChild(favCityName);
     favBodyDiv.appendChild(removeFavBtn);

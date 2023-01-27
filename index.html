@@ -12,9 +12,9 @@
 
 <body id="bodyTag" class="bodyDM">
     <!-- Navbar Start -->
-    <nav class="navbar navbarDM">
+    <nav class="navbar modeBackgroundColorSolid">
         <div class="container-fluid margins">
-            <a id="siteName" class="navbar-brand">climate.xchange</a>
+            <a id="siteName" class="navbar-brand modeColorTxt">climate.xchange</a>
             <form class="d-flex">
                 <input id="cityInput" class="searchBarDM" type="text" placeholder="Search for City, Country Initals">
                 <button id="cityInputBtn" class="btn searchBtnDM" type="button">
@@ -28,23 +28,23 @@
     <!-- Current Weather -->
     <div class="row day0Row">
         <div class="col-12 margins">
-            <div class="day0WeatherDM">
+            <div class="day0Weather modeBackgroundColorSolid">
                 <div class="row">
                     <div class="col-12 day0WeatherTopCol">
-                        <h1 id="cityName"></h1>
-                        <img id="addFavBtn" src="./Assets/Icons/HeartIcon-removebg-preview.png" alt="Search Btn">
+                        <h1 id="cityName" class="modeColorTxt"></h1>
+                        <img id="addFavBtn" src="./Assets/Icons/icons8-favorite-100-removebg-preview.png" alt="Search Btn">
                     </div>
                 </div>
                 <div class="row">
                     <div id="day0TempCol" class="col-12">
                         <img id="day0TempIcon" src="./Assets/Icons/iconizer-sun.svg" alt="Sun">
-                        <h1 id="day0Temp" class="day0Temp"></h1>
+                        <h1 id="day0Temp" class="day0Temp  modeColorTxt"></h1>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12 day0WeatherBottomCol">
-                        <h1 id="day0Description"></h1>
-                        <h1 id="day0HighLow"></h1>
+                        <h1 id="day0Description" class="modeColorTxt"></h1>
+                        <h1 id="day0HighLow" class="modeColorTxt"></h1>
                     </div>
                 </div>
             </div>
@@ -55,48 +55,48 @@
     <!-- 5 Day Forecast -->
     <div class="row forecastSpacing">
         <div class="pillar-20">
-            <div id="day1Div" class="forecastDivsDM">
-                <h3 id="day1Date"></h3>
+            <div id="day1Div" class="forecastDivs modeBackgroundColorTransparent">
+                <h3 id="day1Date" class="futureDayDate modeColorTxt"></h3>
                 <div class="d-flex justify-content-center">
                     <img class="forecastIcons" src="./Assets/Icons/cloud-hail-sun.svg" alt="WeatherIcon">
                 </div> 
-                <p id="day1HighLow"></p>
+                <p id="day1HighLow" class="futureDayHighLow modeColorTxt"></p>
             </div>
         </div>
         <div class="pillar-20">
-            <div id="day2Div" class="forecastDivsDM">
-                <h3 id="day2Date"></h3>
+            <div id="day2Div" class="forecastDivs modeBackgroundColorTransparent">
+                <h3 id="day2Date" class="futureDayDate modeColorTxt"></h3>
                 <div class="d-flex justify-content-center">
                     <img class="forecastIcons" src="./Assets/Icons/cloud-hail-sun.svg" alt="WeatherIcon">
                 </div> 
-                <p id="day2HighLow"></p>
+                <p id="day2HighLow" class="futureDayHighLow modeColorTxt"></p>
             </div>
         </div>
         <div class="pillar-20">
-            <div id="day3Div" class="forecastDivsDM">
-                <h3 id="day3Date"></h3>
+            <div id="day3Div" class="forecastDivs modeBackgroundColorTransparent">
+                <h3 id="day3Date" class="futureDayDate modeColorTxt"></h3>
                 <div class="d-flex justify-content-center">
                     <img class="forecastIcons" src="./Assets/Icons/cloud-hail-sun.svg" alt="WeatherIcon">
                 </div> 
-                <p id="day3HighLow">F</p>
+                <p id="day3HighLow" class="futureDayHighLow modeColorTxt"></p>
             </div>
         </div>
         <div class="pillar-20">
-            <div id="day4Div" class="forecastDivsDM">
-                <h3 id="day4Date"></h3>
+            <div id="day4Div" class="forecastDivs modeBackgroundColorTransparent">
+                <h3 id="day4Date" class="futureDayDate modeColorTxt"></h3>
                 <div class="d-flex justify-content-center">
                     <img class="forecastIcons" src="./Assets/Icons/cloud-hail-sun.svg" alt="WeatherIcon">
                 </div> 
-                <p id="day4HighLow"></p>
+                <p id="day4HighLow" class="futureDayHighLow modeColorTxt"></p>
             </div>
         </div>
         <div class="pillar-20">
-            <div id="day5Div" class="forecastDivsDM">
-                <h3 id="day5Date"></h3>
+            <div id="day5Div" class="forecastDivs modeBackgroundColorTransparent">
+                <h3 id="day5Date" class="futureDayDate modeColorTxt"></h3>
                 <div class="d-flex justify-content-center">
                     <img class="forecastIcons" src="./Assets/Icons/cloud-hail-sun.svg" alt="WeatherIcon">
                 </div> 
-                <p id="day5HighLow"></p>
+                <p id="day5HighLow" class="futureDayHighLow modeColorTxt"></p>
             </div>
         </div>
     </div>
@@ -105,7 +105,7 @@
     <!-- Future Morning Afternoon Evening -->
     <div class="row">
         <div class="col-12 margins">
-            <div id="futureForecast" class="futureForecastDiv">
+            <div id="futureForecast" class="futureForecastDiv modeBackgroundColorTransparent">
 
             </div>
         </div>
@@ -115,7 +115,7 @@
     <!-- Open Favorites Button -->
     <div class="row openFavoriteRow">
         <div class="col-12 d-flex justify-content-center">
-            <button id="openFavoritesBtn" type="button" class="btn openFavoritesBtn">Open Your Favorite
+            <button id="openFavoritesBtn" type="button" class="btn openFavoritesBtn modeBackgroundColorTransparent modeColorTxt">Open Your Favorite
                 Places</button>
         </div>
     </div>
@@ -124,15 +124,23 @@
     <!-- Change Temp Type -->
     <div class="row">
         <div class="col-12">
-            <h3 id="tempChangeTxt" class="tempChangeTxt">temperature view: Fahrenheit (click to change)</h3>
+            <h3 id="tempChangeTxt" class="tempChangeTxt modeColorTxt">temperature view: Fahrenheit (click to change)</h3>
         </div>
     </div>
     <!-- Change Temp Type -->
 
+    <!-- Day/NightMode -->
+    <div class="row">
+        <div class="col-12 modeChangeCol">
+            <button id="modeChange" class="modeChangeBtn modeBackgroundColorTransparent modeColorTxt">Change Mode</button>
+        </div>
+    </div>
+    <!-- Day/NightMode -->
+
     <!-- Favorites List -->
-    <div class="offcanvas offcanvas-start favOffCanvas" tabindex="-1" id="favoritesOffCanvas" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas offcanvas-start favOffCanvas modeBackgroundColorTransparent" tabindex="-1" id="favoritesOffCanvas" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasExampleLabel">YOUR FAVORITE CITIES</h5>
+          <h5 class="offcanvas-title modeColorTxt" id="offcanvasExampleLabel modeColorTxt">YOUR FAVORITE CITIES</h5>
           <button id="closeFavoritesBtn" type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div id="favCitiesBody" class="offcanvas-body">
@@ -140,27 +148,6 @@
         </div>
       </div>
     <!-- Favorites List -->
-
-    <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Understood</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"

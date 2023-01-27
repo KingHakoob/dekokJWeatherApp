@@ -54,15 +54,37 @@
     background-position: top;
 }
 
-    /* NavBar */
-.navbarDM {
+/* Day Mode - AKA DM */
+
+.modeColorTxt {
+    color: #454545;
+}
+
+.modeBackgroundColorSolid {
     background-color: white;
+}
+
+.modeBackgroundColorTransparent {
+    background-color: #ffffffc4;
+}
+
+/* Night Mode - AKA DM */
+.bodyNM {
+    background-image: url('../Assets/Images/nightbg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+/* Night Mode - AKA DM */
+
+/* NavBar */
+.navbar {
     padding: 0;
 }
 
 #siteName {
     font-family: Philosopher-Bold;
-    color: #757575;
     font-size: 1.8rem;
 }
 
@@ -89,15 +111,14 @@
     color: white;
     background-color: #BDB8F8;
 }
-    /* NavBar */
+/* NavBar */
 
-    /* Current Weather */
+/* Current Weather */
 .day0Row {
     padding-top: 3rem;
 }
 
-.day0WeatherDM {
-    background-color: white;
+.day0Weather {
     border-radius: 10px;
 }
 
@@ -113,7 +134,6 @@
 #cityName {
     font-family: Biryani-ExtraLight;
     font-size: 2rem;
-    color: #A2A2A2;
     letter-spacing: 0.2rem;
 }
 
@@ -134,7 +154,6 @@
 .day0Temp {
     font-family: Philosopher-Regular;
     font-size: 6rem;
-    color: #454545;
 }
 
 #day0TempIcon {
@@ -149,9 +168,7 @@
     width: 90%;
     padding-top: 1rem;
     padding-bottom: 1.2rem;
-
     font-family: Philosopher-Regular;
-    color: #757575;
 }
 
 #day0Description {
@@ -161,9 +178,9 @@
 #day0HighLow {
     font-size: 1.8rem;
 }
-    /* Current Weather */
+/* Current Weather */
 
-    /* 5 Day Forecast */
+/* 5 Day Forecast */
 .forecastSpacing {
     margin-left: 24%;
     margin-right: 24%;
@@ -173,8 +190,7 @@
     justify-content: space-around;
 }
 
-.forecastDivsDM {
-    background-color: #ffffffc4;
+.forecastDivs {
     border-radius: 10px;
     text-align: center;
 }
@@ -188,82 +204,26 @@
     width: 2rem;
 }
 
-#day1Date {
+.futureDayDate {
     padding-top: 1rem;
     font-family: Biryani-Regular;
     font-size: 1rem;
-    color: #636561;
 }
 
-#day1HighLow {
+.futureDayHighLow {
     font-family: Biryani-Regular;
     font-size: 1rem;
-    color: #636561;
 }
+/* 5 Day Forecast */
 
-#day2Date {
-    padding-top: 1rem;
-    font-family: Biryani-Regular;
-    font-size: 1rem;
-    color: #636561;
-}
-
-#day2HighLow {
-    font-family: Biryani-Regular;
-    font-size: 1rem;
-    color: #636561;
-}
-
-#day3Date {
-    padding-top: 1rem;
-    font-family: Biryani-Regular;
-    font-size: 1rem;
-    color: #636561;
-}
-
-#day3HighLow {
-    font-family: Biryani-Regular;
-    font-size: 1rem;
-    color: #636561;
-}
-
-#day4Date {
-    padding-top: 1rem;
-    font-family: Biryani-Regular;
-    font-size: 1rem;
-    color: #636561;
-}
-
-#day4HighLow {
-    font-family: Biryani-Regular;
-    font-size: 1rem;
-    color: #636561;
-}
-
-#day5Date {
-    padding-top: 1rem;
-    font-family: Biryani-Regular;
-    font-size: 1rem;
-    color: #636561;
-}
-
-#day5HighLow {
-    font-family: Biryani-Regular;
-    font-size: 1rem;
-    color: #636561;
-}
-    /* 5 Day Forecast */
-
-    /* Future Forecast */
+/* Future Forecast */
 .futureForecastDiv {
-    background-color: #ffffffc4;
     border-radius: 10px;
 }
 
 .futureForecastDay {
     font-family: Biryani-Light;
     font-size: 1.6rem;
-    color: #636561;
     letter-spacing: 0.2rem;
     margin-top: 8%;
     margin-left: 10%;
@@ -274,7 +234,6 @@
 .futureForecastDescription {
     font-family: Biryani-Light;
     font-size: 1.6rem;
-    color: #636561;
     margin-top: 8%;
     margin-left: 10%;
     padding-bottom: 1rem;
@@ -295,7 +254,6 @@
     margin-top: 5%;
     font-family: Biryani-Light;
     font-size: 1rem;
-    color: #636561;
 }
 
 .futureForecastIcons {
@@ -305,13 +263,12 @@
 .futureForecastTempTxt {
     font-family: Philosopher-Regular;
     font-size: 3rem;
-    color: #454545;
     margin-bottom: 0;
 }
 
-    /* Future Forecast */
+/* Future Forecast */
 
-    /* Open Favorites */
+/* Open Favorites */
 .openFavoriteRow {
     padding-top: 1rem;
 }
@@ -319,29 +276,37 @@
 .openFavoritesBtn {
     width: 25%;
     border-radius: 10px;
-    color: #636561;
-    background-color: #ffffffc4;
     border: none;
 }
 
 .openFavoritesBtn:hover {
-    color: #636561;
-    background-color: #ffffffc4;
     border: none;
 }
-    /* Open Favorites */
+/* Open Favorites */
 
-    /* Change Temp */
+/* Change Temp */
 .tempChangeTxt {
+    padding-top: 2rem;
     text-align: center;
     color: white;
     font-size: 0.8rem;
 }
-    /* Change Temp */
+/* Change Temp */
 
-    /* Favorites Off Canvas */
+/* Change Mode */
+.modeChangeCol {
+    display: flex;
+    justify-content: center;
+}
+
+.modeChangeBtn {
+    border-radius: 8px;
+    border: none;
+}
+/* Change Mode */
+
+/* Favorites Off Canvas */
 .favOffCanvas {
-    background-color: #ffffffc4;
     margin-top: 3.3rem;
     width: 5rem;
 }
@@ -355,7 +320,6 @@
 }
 
 .favBody {
-    background-color: white;
     border-radius: 10px;
     display: flex;
     justify-content: space-between;
@@ -365,7 +329,6 @@
     margin: 0;
     font-family: Biryani-Bold;
     font-size: 1rem;
-    color: #707070;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     padding-left: 1rem;
@@ -375,18 +338,6 @@
     padding-top: 1rem;
     padding-bottom: 0.5rem;
     width: 0.1rem;
-    color: #A2A2A2;
     margin-right: 1rem;
 }
-    /* Favorites Off Canvas */
-/* Day Mode - AKA DM */
-
-/* Night Mode - AKA DM */
-.bodyNM {
-    background-image: url('../Assets/Images/nightbg.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-}
-/* Night Mode - AKA DM */
+/* Favorites Off Canvas */
